@@ -6,10 +6,19 @@
   background-color: #222;
   height: 70px;
   padding: 20px;
-  color: white;
+  color: palevioletred;
   margin-bottom: 20px;
 }
 
 .App-title {
   font-size: 2em;
+}
+
+#addItem{
+  background-color: #222;
+  color: palevioletred;
+}
+
+#removeItem{
+  background-color: palevioletred;
 }
