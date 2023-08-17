@@ -5,10 +5,19 @@
 .App-header {
   background-color: #222;
   height: 70px;
-  padding: 20px;
+  padding: 40px;
   color: palevioletred;
   margin-bottom: 20px;
 }
+
+h1 {
+  text-align: left;
+}
+
+h2 {
+  text-align: right;
+}
+
 
 .App-title {
   font-size: 2em;
@@ -21,4 +30,15 @@
 
 #removeItem{
   background-color: palevioletred;
+}
+
+.fancyBtn{
+  margin-right: right;
+  font-size: larger;
+}
+
+.fancyDiv{
+  text-align: right;
+  margin-right: 30PX;
+  margin-bottom: 20px;
 }
