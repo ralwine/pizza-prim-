@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export function CheckoutPage() {
 
-  const 
-  
+  const tableList = useSelector(store => store.cart)
+    console.log(tableList)
   return (<div>
     <div>
 
@@ -23,8 +23,13 @@ export function CheckoutPage() {
             </th>
           </tr>
         </thead>
+        
         <tbody>
-
+        {tableList.map((info, index)=>
+          <tr key={index}>
+            <td>{info.name} {info.id} {info.price}</td>
+          </tr>
+        )}
         </tbody>
       </table>
     </div>
