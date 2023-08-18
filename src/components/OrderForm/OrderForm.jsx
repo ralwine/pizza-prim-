@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 export function OrderForm() {
+
+    const dispatch = useDispatch()
+
     const [customerName, setCustomerName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -23,7 +27,13 @@ export function OrderForm() {
         }
         console.log("customer data from order form:", customerData)
         // Note to group - I stopped here but the form is working, and I think we want to add all this data to a global state still!!!
-    }
+        
+        dispatch({
+            type: 'CUST_INFO',
+            payload: customerData
+    })
+
+}
 
 
     return (
@@ -45,9 +55,9 @@ export function OrderForm() {
             </form>
 
             <div className="fancyDiv">
-                {/* <Link to="/checkout"> */}
+                <Link to="/checkout">
                 <button className="fancyBtn" onClick={handleCustomerInfo}>NEXT</button>
-                {/* </Link> */}
+                </Link>
             </div>
 
         </div>

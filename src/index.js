@@ -42,13 +42,21 @@ const totalPrice = (state = 0, action) => {
     return state
 }
 
+const custInfo = (state = [], action) => {
+    if (action.type === 'CUST_INFO') {
+        console.log("payload cust info recived", action.payload, state)
+        return [...state, action.payload]
+    }
+    return state
+}
 
 
 const reduxStore = createStore(
     combineReducers({
         pizzaList,
         cart,
-        totalPrice
+        totalPrice,
+        custInfo
     }),
     applyMiddleware(logger)
 );
