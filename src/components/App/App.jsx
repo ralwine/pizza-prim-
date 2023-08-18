@@ -3,12 +3,15 @@ import axios from 'axios';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { PizzaItem } from '../PizzaItem/PizzaItem';
-import CustomerInfo from '../CustomerInfo/CustomerInfo';
+import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { FrontPage } from './FrontPage';
+
 
 function App() {
 
   const pizzaList = useSelector(store => store.pizzaList)
+  const cartList = useSelector(store => store.cart)
+  const totalPrice = useSelector(store => store.totalPrice)
 
   const dispatch = useDispatch()
 
@@ -36,26 +39,30 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
+        <h2>Total Price: ${totalPrice}</h2>
         <h1 className='App-title'>Pizza Primé</h1>
+
       </header>
 
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is not so bad.</p>
-      <div>
+      <Router>
+        <Route path='/' exact>
+          <FrontPage
+            pizzaList={pizzaList} />
+        </Route>
+        <Route path='/order_form'>
 
-        {pizzaList.map((pizza, index) =>
-          <div key={pizza.id}>
-            <PizzaItem
-              index={index}
-              pizza={pizza}
-            />
-          </div>
-        )}
-      </div>
-      <CustomerInfo />
+        </Route>
+        <Route path='/checkout'>
+
+        </Route>
+        <Route path='/admin'>
+
+        </Route>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
 
