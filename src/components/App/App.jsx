@@ -3,17 +3,16 @@ import axios from 'axios';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { PizzaItem } from '../PizzaItem/PizzaItem';
-
-// `/api/pizza`
-// `/api/order`
-
-
+import { HashRouter as Router, Route } from 'react-router-dom';
+import { FrontPage } from './FrontPage';
+import { OrderForm } from '../OrderForm';
 
 
 function App() {
 
   const pizzaList = useSelector(store => store.pizzaList)
+  const cartList = useSelector(store => store.cart)
+  const totalPrice = useSelector(store => store.totalPrice)
 
   const dispatch = useDispatch()
 
@@ -24,15 +23,11 @@ function App() {
   const fetchPizzaList = () => {
     axios.get('/api/pizza')
       .then(response => {
-        console.log(response.data)
-        //TODO add payload after setup
-        dispatch({
-          type: 'GET_PIZZA',
-          payload: response.data
-        })
-          .catch(error => {
-            console.log("hey!", error)
-          })
+        console.log("response.data in GET:", response.data)
+        dispatch({ type: 'GET_PIZZA', payload: response.data })
+      })
+      .catch(error => {
+        console.log("hey!", error)
       })
   }
   //GET pizza table
@@ -41,27 +36,32 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1 className='App-title'>Pizza Primé</h1>
+        <h1>
+          <span className='App-title'>Pizza Primé</span>
+          <span>Total Price: ${totalPrice}</span>
+        </h1>
+
       </header>
 
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is not so bad.</p>
-      <div>
+      <Router>
+        <Route path='/' exact>
+          <FrontPage
+            pizzaList={pizzaList} />
+        </Route>
+        <Route path='/order_form'>
+          <OrderForm />
+        </Route>
+        <Route path='/checkout'>
 
-        {pizzaList.map((pizza, index) =>
-          <div key={pizza.id}>
-            <PizzaItem
-              index={index}
-              pizza={pizza}
-            />
-          </div>
-        )}
-      </div>
+        </Route>
+        <Route path='/admin'>
 
-
+        </Route>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
 
