@@ -3,8 +3,9 @@ import axios from 'axios';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { FrontPage } from './FrontPage';
+import { OrderForm } from '../OrderForm';
 
 
 function App() {
@@ -22,15 +23,11 @@ function App() {
   const fetchPizzaList = () => {
     axios.get('/api/pizza')
       .then(response => {
-        console.log(response.data)
-        //TODO add payload after setup
-        dispatch({
-          type: 'GET_PIZZA',
-          payload: response.data
-        })
-          .catch(error => {
-            console.log("hey!", error)
-          })
+        console.log("response.data in GET:", response.data)
+        dispatch({ type: 'GET_PIZZA', payload: response.data })
+      })
+      .catch(error => {
+        console.log("hey!", error)
       })
   }
   //GET pizza table
@@ -39,8 +36,10 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h2>Total Price: ${totalPrice}</h2>
-        <h1 className='App-title'>Pizza Primé</h1>
+        <h1>
+          <span className='App-title'>Pizza Primé</span>
+          <span>Total Price: ${totalPrice}</span>
+        </h1>
 
       </header>
 
@@ -50,7 +49,7 @@ function App() {
             pizzaList={pizzaList} />
         </Route>
         <Route path='/order_form'>
-
+          <OrderForm />
         </Route>
         <Route path='/checkout'>
 

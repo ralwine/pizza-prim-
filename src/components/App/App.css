@@ -11,34 +11,61 @@
 }
 
 h1 {
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 }
-
-h2 {
-  text-align: right;
-}
-
 
 .App-title {
   font-size: 2em;
 }
 
-#addItem{
+#addItem {
   background-color: #222;
   color: palevioletred;
 }
 
-#removeItem{
+#removeItem {
   background-color: palevioletred;
 }
 
-.fancyBtn{
-  margin-right: right;
-  font-size: larger;
+img {
+  height: 250px;
 }
 
-.fancyDiv{
+.fancyBtn {
+  margin-right: right;
+  font-size: 2em;
+  border: 3px solid #222;
+  background-color: whitesmoke;
+  letter-spacing: 0.15em;
+  line-height: 0.75em;
+  padding: 1rem 2rem 1rem;
+}
+
+.fancyBtn:hover {
+  background-color: #222;
+  border: 3px solid whitesmoke;
+  color: whitesmoke
+}
+
+.fancyDiv {
   text-align: right;
-  margin-right: 30PX;
-  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+form {
+  text-align: left;
+  margin: 100px;
+}
+
+input {
+  margin-bottom: 30px;
+  line-height: 1.3em;
+  width: 200px;
+}
+
+.radioBtn {
+  height: 15px;
+  width: 100px;
 }
