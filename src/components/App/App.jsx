@@ -4,8 +4,9 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { FrontPage } from './FrontPage';
-import { OrderForm } from '../OrderForm';
+import { FrontPage } from '../FrontPage/FrontPage';
+import { OrderForm } from '../OrderForm/OrderForm';
+import { CheckoutPage } from '../CheckoutPage/CheckoutPage';
 
 
 function App() {
@@ -52,10 +53,16 @@ function App() {
           <OrderForm />
         </Route>
         <Route path='/checkout'>
-
+          <CheckoutPage />
         </Route>
         <Route path='/admin'>
-
+          <div>
+            <header className='Admin'>
+              <h1>
+                <span className='Admin-Info'>Pizza Primé Orders</span>
+              </h1>
+            </header>
+          </div>
         </Route>
       </Router>
     </div>
@@ -63,5 +70,6 @@ function App() {
 }
 
 export default App;
+
 
 
