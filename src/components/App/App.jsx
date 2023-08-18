@@ -4,12 +4,7 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { PizzaItem } from '../PizzaItem/PizzaItem';
-
-// `/api/pizza`
-// `/api/order`
-
-
-
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
 
 function App() {
 
@@ -57,8 +52,7 @@ function App() {
           </div>
         )}
       </div>
-
-
+      <CustomerInfo />
     </div>
   );
 }
